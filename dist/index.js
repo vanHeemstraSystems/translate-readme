@@ -70483,7 +70483,6 @@ var external_path_ = __nccwpck_require__(6928);
 var core = __nccwpck_require__(7484);
 // EXTERNAL MODULE: ./node_modules/google-translate-api/index.js
 var google_translate_api = __nccwpck_require__(1597);
-var google_translate_api_default = /*#__PURE__*/__nccwpck_require__.n(google_translate_api);
 ;// CONCATENATED MODULE: ./node_modules/mdast-util-to-string/lib/index.js
 /**
  * @typedef {import('mdast').Nodes} Nodes
@@ -87421,7 +87420,7 @@ unist_util_visit_default()(readmeAST, async node => {
     if (node.type === 'text') {
       console.log("node.value: ", node.value)
       originalText.push(node.value)
-      node.value = "foobar" // (await $(node.value, { to: lang })).text
+      node.value = "foobar1" // (await $(node.value, { to: lang })).text
     }
   } catch (error) {
     console.log('visit error: ', error)
@@ -87430,7 +87429,7 @@ unist_util_visit_default()(readmeAST, async node => {
 })
 
 const translatedText = originalText.map(async text => {
-  return (await google_translate_api_default()(text, { to: lang })).text
+  return "foobar2" // (await $(text, { to: lang })).text
 })
 
 async function writeToFile () {
