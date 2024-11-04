@@ -87419,8 +87419,9 @@ let originalText = []
 unist_util_visit_default()(readmeAST, async node => {
   try {
     if (node.type === 'text') {
+      console.log("node.value: ", node.value)
       originalText.push(node.value)
-      node.value = (await google_translate_api_default()(node.value, { to: lang })).text
+      node.value = "foobar" // (await $(node.value, { to: lang })).text
     }
   } catch (error) {
     console.log('visit error: ', error)
