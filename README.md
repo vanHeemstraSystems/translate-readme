@@ -12,8 +12,6 @@
 
 This is a GitHub Action that automatically translate the readme in your repo to a specified language.
 
-_A submission for the [DEV: GitHub Actions For Open Source!](https://dev.to/devteam/announcing-the-github-actions-hackathon-on-dev-3ljn) hackathon_
-
 ## Setup
 
 1. **Add a workflow file** to your project (e.g. `.github/workflows/readme.yml`):
@@ -29,30 +27,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: 12.x
-      # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
+          node-version: 16.x
+      # ISO Language Codes: https://cloud.google.com/translate/docs/languages  
       - name: Adding README - Chinese Simplified
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: zh-CN
       - name: Adding README - Chinese Traditional
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: zh-TW
       - name: Adding README - Hindi
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: hi
       - name: Adding README - Arabic
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: ar
       - name: Adding README - French
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: fr
 ```
@@ -63,7 +61,7 @@ jobs:
 
 You can configure the action further with the following options:
 
-- `LANG`: The language you want to translate your readme to. The default is Simplified Chinese. (I'm a Ghanaian) The supported languages can be found below.
+- `LANG`: The language you want to translate your readme to. The default is Simplified Chinese. The supported languages can be found below.
   (default: `zh-CH`) (required: `false`)
 
 ## Supported Languages
@@ -72,7 +70,7 @@ Languages supported can be found here https://cloud.google.com/translate/docs/la
 
 ### Issues
 
-Check [here](https://github.com/dephraiim/translate-readme/issues/1) for issues related to this action.
+Check [here](https://github.com/vanHeemstraSystems/translate-readme/issues/1) for issues related to this action.
 
 ### Development
 

@@ -13,8 +13,6 @@
 
 هذا إجراء GitHub يقوم تلقائيًا بترجمة الملف التمهيدي في الريبو الخاص بك إلى لغة محددة.
 
-_تقديم ل[DEV: إجراءات جيثب للمصدر المفتوح!](https://dev.to/devteam/announcing-the-github-actions-hackathon-on-dev-3ljn)هاكاثون_
-
 ## اقامة
 
 1.  **أضف ملف سير عمل**لمشروعك (على سبيل المثال`.github/workflows/readme.yml`):
@@ -31,30 +29,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: 12.x
-      # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
+          node-version: 16.x
+      # ISO Language Codes: https://cloud.google.com/translate/docs/languages  
       - name: Adding README - Chinese Simplified
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: zh-CN
       - name: Adding README - Chinese Traditional
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: zh-TW
       - name: Adding README - Hindi
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: hi
       - name: Adding README - Arabic
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: ar
       - name: Adding README - French
-        uses: dephraiim/translate-readme@main
+        uses: vanHeemstraSystems/translate-readme@main
         with:
           LANG: fr
 ```
@@ -65,7 +63,7 @@ jobs:
 
 يمكنك تكوين الإجراء بشكل أكبر باستخدام الخيارات التالية:
 
--   `LANG`: The language you want to translate your readme to. The default is Simplified Chinese. (I'm a Ghanaian) The supported languages can be found below.
+-   `LANG`: The language you want to translate your readme to. The default is Simplified Chinese. The supported languages can be found below.
     (default: `zh-CH`) (مطلوب:`false`)
 
 ## اللغات المعتمدة
@@ -74,7 +72,7 @@ jobs:
 
 ### مشاكل
 
-يفحص[هنا](https://github.com/dephraiim/translate-readme/issues/1)للقضايا المتعلقة بهذا الإجراء.
+يفحص[هنا](https://github.com/vanHeemstraSystems/translate-readme/issues/1)للقضايا المتعلقة بهذا الإجراء.
 
 ### تطوير
 
