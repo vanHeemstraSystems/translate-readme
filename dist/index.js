@@ -87418,9 +87418,9 @@ let originalText = []
 unist_util_visit_default()(readmeAST, async node => {
   try {
     if (node.type === 'text') {
-      console.log("node.value: ", node.value)
+      console.log('node.value: ', node.value)
       originalText.push(node.value)
-      node.value = "foobar1" // (await $(node.value, { to: lang })).text
+      node.value = 'foobar1' // (await $(node.value, { to: lang })).text
     }
   } catch (error) {
     console.log('visit error: ', error)
@@ -87429,19 +87429,20 @@ unist_util_visit_default()(readmeAST, async node => {
 })
 
 const translatedText = originalText.map(async text => {
-  return "foobar2" // (await $(text, { to: lang })).text
+  return 'foobar2' // (await $(text, { to: lang })).text
 })
 
 async function writeToFile () {
   try {
-    await Promise.all(translatedText)
-    console.log("translatedText: ", translatedText)
-    ;(0,external_fs_.writeFileSync)(
-      (0,external_path_.join)(mainDir, `README.${lang}.md`),
-      toMarkdown(readmeAST),
-      'utf8'
-    )
-    console.log(`README.${lang}.md written`)
+    await Promise.all(translatedText).then(() => {
+      // console.log("translatedText: ", translatedText)
+      ;(0,external_fs_.writeFileSync)(
+        (0,external_path_.join)(mainDir, `README.${lang}.md`),
+        toMarkdown(readmeAST),
+        'utf8'
+      )
+      console.log(`README.${lang}.md written`)
+    })
   } catch (error) {
     console.log('writeToFile error: ', error)
     // throw new Error(error)
