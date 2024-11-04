@@ -63,10 +63,10 @@ async function commitChanges (lang) {
   try {
     console.log('commit started')
     await git.add('./*')
-    await git.addConfig('user.name', 'github-actions[bot]')
+    await git.addConfig('user.name', 'Willem van Heemstra')
     await git.addConfig(
       'user.email',
-      'github-actions[bot]@users.noreply.github.com'
+      'wvanheemstra@icloud.com'
     )
     await git.commit(
       `docs: Added README."${lang}".md translation via https://github.com/dephraiim/translate-readme`
