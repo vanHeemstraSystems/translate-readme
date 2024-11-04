@@ -87435,6 +87435,7 @@ const translatedText = originalText.map(async text => {
 async function writeToFile () {
   try {
     await Promise.all(translatedText)
+    console.log("translatedText: ", translatedText)
     ;(0,external_fs_.writeFileSync)(
       (0,external_path_.join)(mainDir, `README.${lang}.md`),
       toMarkdown(readmeAST),
