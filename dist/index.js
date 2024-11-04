@@ -87430,20 +87430,18 @@ unist_util_visit_default()(readmeAST, async node => {
 })
 
 const translatedText = originalText.map(async text => {
-  return 'foobar2' // (await $(text, { to: lang })).text
+  return (await google_translate_api_default()(text, { to: lang })).text
 })
 
 async function writeToFile () {
   try {
-    await Promise.all(translatedText).then(() => {
-      // console.log("translatedText: ", translatedText)
-      ;(0,external_fs_.writeFileSync)(
-        (0,external_path_.join)(mainDir, `README.${lang}.md`),
-        toMarkdown(readmeAST),
-        'utf8'
-      )
-      console.log(`README.${lang}.md written`)
-    })
+    await Promise.all(translatedText)
+    ;(0,external_fs_.writeFileSync)(
+      (0,external_path_.join)(mainDir, `README.${lang}.md`),
+      toMarkdown(readmeAST),
+      'utf8'
+    )
+    console.log(`README.${lang}.md written`)
   } catch (error) {
     console.log('writeToFile error: ', error)
     // throw new Error(error)

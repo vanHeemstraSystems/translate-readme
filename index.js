@@ -42,20 +42,18 @@ visit(readmeAST, async node => {
 })
 
 const translatedText = originalText.map(async text => {
-  return 'foobar2' // (await $(text, { to: lang })).text
+  return (await $(text, { to: lang })).text
 })
 
 async function writeToFile () {
   try {
-    await Promise.all(translatedText).then(() => {
-      // console.log("translatedText: ", translatedText)
-      writeFileSync(
-        join(mainDir, `README.${lang}.md`),
-        toMarkdown(readmeAST),
-        'utf8'
-      )
-      console.log(`README.${lang}.md written`)
-    })
+    await Promise.all(translatedText)
+    writeFileSync(
+      join(mainDir, `README.${lang}.md`),
+      toMarkdown(readmeAST),
+      'utf8'
+    )
+    console.log(`README.${lang}.md written`)
   } catch (error) {
     console.log('writeToFile error: ', error)
     // throw new Error(error)
