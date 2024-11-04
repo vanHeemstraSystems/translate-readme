@@ -33,7 +33,7 @@ visit(readmeAST, async node => {
     if (node.type === 'text') {
       console.log('node.value: ', node.value)
       originalText.push(node.value)
-      node.value = 'foobar1' // (await $(node.value, { to: lang })).text
+      node.value = (await $(node.value, { to: lang })).text
     }
   } catch (error) {
     console.log('visit error: ', error)
