@@ -31,6 +31,7 @@ let originalText = []
 visit(readmeAST, async node => {
   try {
     if (node.type === 'text') {
+      console.log("node.value: ", node.value)
       originalText.push(node.value)
       node.value = (await $(node.value, { to: lang })).text
     }
@@ -63,10 +64,10 @@ async function commitChanges (lang) {
   try {
     console.log('commit started')
     await git.add('./*')
-    await git.addConfig('user.name', 'Willem van Heemstra')
+    await git.addConfig('user.name', 'github-actions[bot]')
     await git.addConfig(
       'user.email',
-      'wvanheemstra@icloud.com'
+      'github-actions[bot]@users.noreply.github.com'
     )
     await git.commit(
       `docs: Added README."${lang}".md translation via https://github.com/dephraiim/translate-readme`
